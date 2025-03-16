@@ -1,0 +1,49 @@
+{
+  "dashboard": {
+    "title": "Frontend Monitoring",
+    "panels": [
+      {
+        "title": "Page Load Time",
+        "type": "graph",
+        "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+        "targets": [
+          {
+            "expr": "rate(page_load_time_seconds_sum[5m]) / rate(page_load_time_seconds_count[5m])",
+            "legendFormat": "{{page}}"
+          }
+        ]
+      },
+      {
+        "title": "Chat Response Time",
+        "type": "graph",
+        "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+        "targets": [
+          {
+            "expr": "rate(chat_response_time_seconds_sum[5m]) / rate(chat_response_time_seconds_count[5m])"
+          }
+        ]
+      },
+      {
+        "title": "Error Count",
+        "type": "stat",
+        "gridPos": { "x": 0, "y": 8, "w": 8, "h": 8 },
+        "targets": [
+          {
+            "expr": "sum(frontend_error_count)"
+          }
+        ]
+      },
+      {
+        "title": "User Interactions",
+        "type": "graph",
+        "gridPos": { "x": 8, "y": 8, "w": 16, "h": 8 },
+        "targets": [
+          {
+            "expr": "rate(user_interactions_total[5m])",
+            "legendFormat": "{{action}} - {{component}}"
+          }
+        ]
+      }
+    ]
+  }
+} 
